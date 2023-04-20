@@ -60,7 +60,7 @@ public class TeacherDAO implements ITeacherDAO {
     @Override
     public boolean deleteTeacher(Teacher teacher) throws SQLException {
     int result;
-        String query = "UPDATE Profesor SET IdProfesor=? WHERE IdUsuario=?";
+        String query = "UPDATE Profesor SET IdProfesor=? WHERE IdProfesor=?";
         DataBaseManager dataBaseManager = new DataBaseManager();
         try (Connection connection = dataBaseManager.getConnection()) {
             PreparedStatement statement = connection.prepareStatement(query);
@@ -73,9 +73,18 @@ public class TeacherDAO implements ITeacherDAO {
 
     @Override
     public boolean updateTeacher(Teacher teacher) throws SQLException {
-        
+        int result;
+        String query = "DELETE FROM Profesor WHERE IdProfesor = ?";
+        DataBaseManager dataBaseManager = new DataBaseManager();
+        try (Connection connection = dataBaseManager.getConnection()) {
+            PreparedStatement statement = connection.prepareStatement(query);
+            statement.setInt(1, teacher.getTeacherId());
+            result = statement.executeUpdate();
+        }
+
+        return result > 0;
+    }
     }
     
- }
     
 
