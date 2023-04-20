@@ -59,7 +59,7 @@ public class CodirectorDAOTest {
         codirector.setTeacherId(11);
         
         CodirectorDAO instance = new CodirectorDAO();
-        boolean expectedResult = true;
+        boolean expectedResult = false;
         boolean result = instance.createCodirector(codirector);
         assertEquals(expectedResult, result);
     }

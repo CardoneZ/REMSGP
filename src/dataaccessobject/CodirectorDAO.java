@@ -62,7 +62,7 @@ public class CodirectorDAO implements ICodirectorDAO {
    @Override
     public boolean updateCodirector(Codirector codirector) throws SQLException {
     int result;
-    String query = "UPDATE Director SET IdProfesor=? WHERE IdCirector=?";
+    String query = "UPDATE Codirector SET IdProfesor=? WHERE IdCodirector=?";
     DataBaseManager dataBaseManager = new DataBaseManager();
         try (Connection connection = dataBaseManager.getConnection()) {
             PreparedStatement statement = connection.prepareStatement(query);
@@ -70,15 +70,15 @@ public class CodirectorDAO implements ICodirectorDAO {
             statement.setInt(2, codirector.getIdCodirector());
             result = statement.executeUpdate();
         }
-    return result > 0;
+        return result > 0;
     
     }
 
     @Override
     public boolean deleteCodirector(int idCodirector) throws SQLException {
-        int result;
-        String query = "DELETE FROM Director WHERE IdCirector = ?";
-        DataBaseManager dataBaseManager = new DataBaseManager();
+    int result;
+    String query = "DELETE FROM Codirector WHERE IdCodirector = ?";
+    DataBaseManager dataBaseManager = new DataBaseManager();
         try (Connection connection = dataBaseManager.getConnection()) {
             PreparedStatement statement = connection.prepareStatement(query);
             statement.setInt(1, idCodirector);

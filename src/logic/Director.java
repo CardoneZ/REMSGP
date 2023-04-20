@@ -7,7 +7,7 @@ package logic;
 
 public class Director extends Teacher {
 
-   public int getTeacherId() {
+    public int getTeacherId() {
         return idTeacher;
     }
 

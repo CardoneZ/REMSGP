@@ -26,7 +26,16 @@ public class Teacher extends User{
         this.staffNumber = staffNumber;
     }
     
+    public int getTeacherId() {
+        return idTeacher;
+    }
+
+    public void setTeacherId(int idTeacher) {
+        this.idTeacher = idTeacher;
+    }
+    
     private int userId;
     private int staffNumber;
+    private int idTeacher;
 
 }

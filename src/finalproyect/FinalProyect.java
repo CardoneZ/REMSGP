@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import logic.Codirector;
 import dataaccessobject.CodirectorDAO;
 import logic.Teacher;
-import logic.TeacherDAO;
+import dataaccessobject.TeacherDAO;
 
 
 

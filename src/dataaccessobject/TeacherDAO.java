@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package logic;
+package dataaccessobject;
 
 import dataaccess.DataBaseManager;
 import java.sql.Connection;
@@ -10,6 +10,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import logic.ITeacherDAO;
+import logic.Teacher;
 
 
 public class TeacherDAO implements ITeacherDAO {
@@ -54,6 +56,25 @@ public class TeacherDAO implements ITeacherDAO {
     
     return (ArrayList<Teacher>) list;
   }   
+
+    @Override
+    public boolean deleteTeacher(Teacher teacher) throws SQLException {
+    int result;
+        String query = "UPDATE Profesor SET IdProfesor=? WHERE IdUsuario=?";
+        DataBaseManager dataBaseManager = new DataBaseManager();
+        try (Connection connection = dataBaseManager.getConnection()) {
+            PreparedStatement statement = connection.prepareStatement(query);
+            statement.setInt(1, teacher.getUserId());
+            statement.setInt(2, teacher.getTeacherId());
+            result = statement.executeUpdate();
+        }
+    return result > 0;
+    }
+
+    @Override
+    public boolean updateTeacher(Teacher teacher) throws SQLException {
+        
+    }
     
  }
     

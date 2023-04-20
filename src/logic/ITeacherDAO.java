@@ -7,11 +7,10 @@ package logic;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-/**
- *
- * @author wero1
- */
+
 public interface ITeacherDAO {
     boolean createTeacher(Teacher teacher) throws SQLException;
     ArrayList<Teacher> consultTeacher() throws SQLException;
+    boolean deleteTeacher (Teacher teacher) throws SQLException;
+    boolean updateTeacher (Teacher teacher) throws SQLException;
 }

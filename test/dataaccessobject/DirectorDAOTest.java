@@ -42,7 +42,19 @@ public class DirectorDAOTest {
      * Test of createDirector method, of class DirectorDAO.
      */
     @Test
-    public void testCreateDirector() throws Exception {
+    public void testCreateDirectorSucces() throws Exception {
+        System.out.println("createDirector");
+        Director director = null;
+        DirectorDAO instance = new DirectorDAO();
+        boolean expResult = true;
+        boolean result = instance.createDirector(director);
+        assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+    
+    @Test
+    public void testCreateDirectorInvalid() throws Exception {
         System.out.println("createDirector");
         Director director = null;
         DirectorDAO instance = new DirectorDAO();

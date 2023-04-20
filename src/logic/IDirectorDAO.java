@@ -17,5 +17,4 @@ public interface IDirectorDAO {
     ArrayList<Director> consultDirector() throws SQLException;    
     boolean deleteDirector(int directorId) throws SQLException;
     boolean updateDirector(Director director) throws SQLException;
-    
 }
