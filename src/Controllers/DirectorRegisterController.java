@@ -25,7 +25,7 @@ public class DirectorRegisterController {
     private Button createDirectorButton;
 
     @FXML
-    private ListView<Director> directorsListView;
+    private ListView<String> directorsListView;
 
     @FXML
     private Button deleteDirectorButton;
@@ -33,7 +33,7 @@ public class DirectorRegisterController {
     private DirectorDAO directorDAO;
 
     @FXML
-    public void initialize() {
+    public void initialize() throws SQLException {
         directorDAO = new DirectorDAO();
         showDirectors();
         directorsListView.getSelectionModel().selectedItemProperty().addListener(
@@ -65,27 +65,23 @@ public class DirectorRegisterController {
 
     @FXML
     void deleteDirector() {
-        Director selectedDirector = directorsListView.getSelectionModel().getSelectedItem();
+        String selectedDirector = directorsListView.getSelectionModel().getSelectedItem();
         try {
-            boolean deleted = directorDAO.deleteDirector(selectedDirector.getIdDirector());
-            if (deleted) {
-                showDirectors();
-                deleteDirectorButton.setDisable(true);
-            }
+            directorDAO.deleteDirector(Integer.parseInt(selectedDirector));
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
     }
 
-    private void showDirectors() {
-        try {
-            ArrayList<Director> directors = directorDAO.consultDirector();
-            directorsListView.getItems().setAll(directors);
-        } catch (SQLException ex) {
-            ex.printStackTrace();
+    @FXML
+    void showDirectors() throws SQLException {
+        DirectorDAO directorDAO = new DirectorDAO();
+        directorsListView.getItems().clear();
+        for(Director directorObject : directorDAO.consultDirector()) {
+           directorsListView.getItems().add(String.valueOf(directorObject.getIdDirector()));
         }
     }
-
+      
     private void clearFields() {
         idTeacherTextField.setText("");
         staffNumberTextField.setText("");
