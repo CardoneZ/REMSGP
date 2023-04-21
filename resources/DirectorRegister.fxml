@@ -15,7 +15,6 @@
         <Label text="Registrar Director" />
         <VBox spacing="10.0">
             <TextField fx:id="idTeacherTextField" promptText="ID Teacher" />
-            <TextField fx:id="staffNumberTextField" promptText="Staff Number" />
             <Button fx:id="createDirectorButton" onAction="#createDirector" text="Crear Director" />
         </VBox>
         <ListView fx:id="directorsListView" />
