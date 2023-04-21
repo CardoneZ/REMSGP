@@ -5,6 +5,7 @@
 package dataaccessobject;
 
 import java.util.ArrayList;
+import java.util.List;
 import logic.Director;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -72,8 +73,8 @@ public class DirectorDAOTest {
     public void testConsultDirector() throws Exception {
         System.out.println("consultDirector");
         DirectorDAO instance = new DirectorDAO();
-        ArrayList<Director> expResult = null;
-        ArrayList<Director> result = instance.consultDirector();
+        List<Director> expResult = null;
+        List<Director> result = instance.consultDirector();
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
