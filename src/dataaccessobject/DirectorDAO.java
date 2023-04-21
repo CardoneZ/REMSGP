@@ -9,6 +9,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.List;
 import java.util.ArrayList;
 import logic.Director;
 import logic.IDirectorDAO;
@@ -32,12 +33,12 @@ public class DirectorDAO implements IDirectorDAO {
     }
     
     @Override
-    public ArrayList<Director> consultDirector() throws SQLException {
+    public List<Director> consultDirector() throws SQLException {
       String sql = "SELECT Profesor.NumeroDePersonal, Usuario.Nombre, Usuario.ApellidoPaterno, Usuario.ApellidoMaterno, Usuario.CorreoInstitucional "
             + "FROM Director "
             + "INNER JOIN Profesor ON Director.IdProfesor = Profesor.IdProfesor "
             + "INNER JOIN Usuario ON Profesor.IdUsuario = Usuario.IdUsuario";
-      ArrayList<Director> list = new ArrayList<>();
+      List<Director> list = new ArrayList<>();
       DataBaseManager dataBaseManager = new DataBaseManager();
         try (Connection connection = dataBaseManager.getConnection()) {
             PreparedStatement statement = connection.prepareStatement(sql);
@@ -54,7 +55,7 @@ public class DirectorDAO implements IDirectorDAO {
                 list.add(director);
             }   }
     
-    return (ArrayList<Director>) list;
+    return  list;
     
     }
     
