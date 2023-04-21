@@ -2,32 +2,53 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package finalproyect;
+package GUI;
 
 
-import Controllers.DirectorRegisterController;
+
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
+import java.io.IOException;
+
 public class JavaApplication extends Application {
-
-    @Override
-    public void start(Stage primaryStage) throws Exception {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("Controllers/DirectorRegister.fxml"));
-        DirectorRegisterController controller = new DirectorRegisterController();
-        loader.setController(controller);
-        VBox root = loader.load();
-        Scene scene = new Scene(root);
-
-        primaryStage.setTitle("Director Register");
-        primaryStage.setScene(scene);
-        primaryStage.show();
-    }
+    private static Scene scene;
+    
 
     public static void main(String[] args) {
-        launch(args);
+        launch();
+    }
+
+    static void setRoot(String fxml) throws IOException {
+        scene.setRoot(loadFXML(fxml));
+    }
+
+    private static Parent loadFXML(String fxml) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(JavaApplication.class.getResource(fxml));
+        return fxmlLoader.load();
+    }
+
+
+    public static void changeView(String url, int width, int height) throws IOException {
+        Stage currentStage = (Stage) scene.getWindow();
+        configureStage(currentStage, width, height);
+        JavaApplication.setRoot(url);
+    }
+
+    private static void configureStage(Stage stage, int width, int height) {
+        stage.setWidth(width);
+        stage.setHeight(height);
+        stage.centerOnScreen();
+    }
+
+    @Override
+    public void start(Stage stage) throws IOException {
+        scene = new Scene(loadFXML("DirectorRegister.fxml"), 600, 400);
+        stage.setTitle("Registro de Directores");
+        stage.setScene(scene);
+        stage.show();
     }
 }
