@@ -16,13 +16,13 @@ public class Director extends Teacher {
     }
 
     public int getIdDirector() {
-        return idCodirector;
+        return idDirector;
     }
 
-    public void setIdDirector(int idCodirector) {
-        this.idCodirector = idCodirector;
+    public void setIdDirector(int idDirector) {
+        this.idDirector = idDirector;
     }
-    private int idCodirector;
+    private int idDirector;
     private int idTeacher;
     
 }
